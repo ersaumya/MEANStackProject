@@ -1,4 +1,5 @@
-import {Request,Response,NextFunction} from 'express';
+import {Request,Response,NextFunction, Errback} from 'express';
+import {User} from '../models/User';
 export class UserController{
     
     static login(req:Request,res:Response,next:NextFunction){
@@ -6,8 +7,15 @@ export class UserController{
     }
 
     static register(req:Request,res:Response,next:NextFunction){
-        console.log(req.body);
-        res.json({ user: "Test", success: "true" });
+        const user=new User(req.body);
+        User.create(user,(err:Errback,result:any)=>{
+            if(err){
+                res.status(500).json({status:'failed',message:err})
+                }
+                else{
+                    res.json({status:'success',message:'Registration Successful',data:result})
+                }
+            })
     }
 
     static updateProfile(req:Request,res:Response,next:NextFunction){
