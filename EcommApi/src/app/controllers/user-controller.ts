@@ -39,7 +39,31 @@ export class UserController{
     }
 
     static updateProfile(req:Request,res:Response,next:NextFunction){
-        console.log(req.body);
-        res.json({ user: "Test", success: "true" });
+         const userId = req.body.userId;
+        // console.log(req.body.addressInfo);
+         User.findByIdAndUpdate(userId,{
+            $set:{
+                firstName:req.body.firstName,
+                lastName:req.body.lastName,
+                addressInfo:req.body.addressInfo
+            }
+         }, (err: Errback, result: any) => {
+           if (err) {
+             res.status(500).json({ status: "failed", message: err });
+           } else {
+             res.json({status: "success",message: "Profile updated!", data: null})
+           }
+         })
+    }
+
+    static getProfile(req:Request,res:Response,next:NextFunction){
+       const userId = req.body.userId;
+       User.findById(userId,(err: Errback, result: any)=>{
+            if (err) {
+             res.status(500).json({ status: "failed", message: err });
+           } else {
+             res.json({status: "success",message: "Profile updated!",data: result})
+           } 
+        })
     }
 }

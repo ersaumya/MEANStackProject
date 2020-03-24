@@ -3,6 +3,13 @@ import { genSalt, hash } from "bcryptjs";
 
 const salt_Round:number | any=process.env.SALT_ROUND;
 
+const AddressSchema = new Schema({
+  addressLine1: String,
+  addressLine2: String,
+  city: String,
+  pin: String
+});
+
 let UserSchema = new Schema({
   firstName: {
     type: String,
@@ -31,17 +38,19 @@ let UserSchema = new Schema({
     required: true,
     trim: true
   },
-  dob:{
-      type:Date,
-      required:true,
-      trim:true
+  dob: {
+    type: Date,
+    required: true,
+    trim: true
   },
-  role:{
-      type:String,
-      trim:true,
-      required:true,
-      default:'User'
-  }
+  addressInfo: AddressSchema,
+  role: {
+    type: String,
+    trim: true,
+    required: true,
+    default: "User"
+  },
+  
 });
 
 UserSchema.pre('save',function(next){

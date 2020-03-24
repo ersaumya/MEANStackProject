@@ -3,6 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const bcryptjs_1 = require("bcryptjs");
 const salt_Round = process.env.SALT_ROUND;
+const AddressSchema = new mongoose_1.Schema({
+    addressLine1: String,
+    addressLine2: String,
+    city: String,
+    pin: String
+});
 let UserSchema = new mongoose_1.Schema({
     firstName: {
         type: String,
@@ -36,12 +42,13 @@ let UserSchema = new mongoose_1.Schema({
         required: true,
         trim: true
     },
+    addressInfo: AddressSchema,
     role: {
         type: String,
         trim: true,
         required: true,
-        default: 'User'
-    }
+        default: "User"
+    },
 });
 UserSchema.pre('save', function (next) {
     const user = this;
