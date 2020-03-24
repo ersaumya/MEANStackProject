@@ -2,8 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const User_1 = require("../models/User");
 const bcryptjs_1 = require("bcryptjs");
+const jsonwebtoken_1 = require("jsonwebtoken");
 class UserController {
     static login(req, res, next) {
+        const private_key = process.env.PRIVATE_KEY || "";
         User_1.User.findOne({ email: req.body.email }, (err, result) => {
             if (err) {
                 res.status(500).json({ status: "failed", message: err });
@@ -11,7 +13,8 @@ class UserController {
             else {
                 if (result != undefined) {
                     if (bcryptjs_1.compareSync(req.body.password, result.password)) {
-                        res.json({ status: "success", message: 'Login Success!' });
+                        const token = jsonwebtoken_1.sign({ id: result._id }, private_key, { expiresIn: '1h' });
+                        res.json({ status: "success", message: 'Login Success!', data: token });
                     }
                     else {
                         res.json({ status: "failed", message: 'UserName or Password is incorrect!' });
