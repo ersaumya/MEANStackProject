@@ -1,4 +1,8 @@
 import {Schema,model} from 'mongoose';
+import { genSalt, hash } from "bcryptjs";
+
+const salt_Round:number | any=process.env.SALT_ROUND;
+
 let UserSchema = new Schema({
   firstName: {
     type: String,
@@ -39,5 +43,24 @@ let UserSchema = new Schema({
       default:'User'
   }
 });
+
+UserSchema.pre('save',function(next){
+  const user:any=this;
+  if(user.isModified("password")){
+    const saltRound=parseInt(salt_Round);
+    genSalt(saltRound,(err,salt)=>{
+      hash(user.password,salt,(err,hash:any)=>{
+        if(err){
+          throw err
+        }else{
+          user.password=hash;
+          next();
+        }
+      })
+    })
+  }else{
+    next(); 
+  }
+})
 
 export const User=model('User',UserSchema);
