@@ -13,15 +13,27 @@ class UserController {
             else {
                 if (result != undefined) {
                     if (bcryptjs_1.compareSync(req.body.password, result.password)) {
-                        const token = jsonwebtoken_1.sign({ id: result._id }, private_key, { expiresIn: '1h' });
-                        res.json({ status: "success", message: 'Login Success!', data: token });
+                        const token = jsonwebtoken_1.sign({ id: result._id }, private_key, {
+                            expiresIn: "1h"
+                        });
+                        res.json({
+                            status: "success",
+                            message: "Login Success!",
+                            data: token
+                        });
                     }
                     else {
-                        res.json({ status: "failed", message: 'UserName or Password is incorrect!' });
+                        res.json({
+                            status: "failed",
+                            message: "UserName or Password is incorrect!"
+                        });
                     }
                 }
                 else {
-                    res.json({ status: "failed", message: 'UserName or Password is incorrect!' });
+                    res.json({
+                        status: "failed",
+                        message: "UserName or Password is incorrect!"
+                    });
                 }
             }
         });
@@ -30,10 +42,14 @@ class UserController {
         const user = new User_1.User(req.body);
         User_1.User.create(user, (err, result) => {
             if (err) {
-                res.status(500).json({ status: 'failed', message: err });
+                res.status(500).json({ status: "failed", message: err });
             }
             else {
-                res.json({ status: 'success', message: 'Registration Successful', data: result });
+                res.json({
+                    status: "success",
+                    message: "Registration Successful",
+                    data: result
+                });
             }
         });
     }
@@ -51,7 +67,11 @@ class UserController {
                 res.status(500).json({ status: "failed", message: err });
             }
             else {
-                res.json({ status: "success", message: "Profile updated!", data: null });
+                res.json({
+                    status: "success",
+                    message: "Profile updated!",
+                    data: null
+                });
             }
         });
     }
@@ -62,7 +82,11 @@ class UserController {
                 res.status(500).json({ status: "failed", message: err });
             }
             else {
-                res.json({ status: "success", message: "Profile updated!", data: result });
+                res.json({
+                    status: "success",
+                    message: "Profile updated!",
+                    data: result
+                });
             }
         });
     }
