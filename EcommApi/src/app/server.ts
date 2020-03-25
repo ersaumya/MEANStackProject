@@ -3,10 +3,14 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import { MongoConnect } from "./db/db";
+import * as helmet from "helmet";
+import * as compression from "compression";
 
 dotenv.config();
 var app = express();
-//app.get("/", (req, res) => res.send("This is get express Api"));
+app.use(helmet());
+app.use(compression());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
