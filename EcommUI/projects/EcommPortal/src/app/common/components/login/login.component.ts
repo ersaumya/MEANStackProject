@@ -24,11 +24,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    this.loginService.login(this.user).subscribe(data => {
-     if(data.status==="success"){
-        this.navigate(data.role)
+    this.loginService.login(this.user).subscribe((response)=> {
+     if(response.status==="success"){
+       sessionStorage.setItem('role',response.role);
+        sessionStorage.setItem('token',response.data)
+        this.navigate(response.role)
      }else{
-       this._snackBar.open(data.message,'Login',{
+       this._snackBar.open(response.message,'Login',{
          duration:1000
        });
      }
