@@ -4,6 +4,7 @@ import { compareSync } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 export class UserController {
+
   static login(req: Request, res: Response, next: NextFunction) {
     const private_key: string = process.env.PRIVATE_KEY || "";
     User.findOne({ email: req.body.email }, (err: Errback, result: any) => {
@@ -18,7 +19,8 @@ export class UserController {
             res.json({
               status: "success",
               message: "Login Success!",
-              data: token
+              data: token,
+              role:result.role
             });
           } else {
             res.json({
