@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "@ecomm/core": {
+      "projectType": "library",
+      "root": "projects/ecomm/core",
+      "sourceRoot": "projects/ecomm/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ecomm/core/tsconfig.lib.json",
+            "project": "projects/ecomm/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ecomm/core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ecomm/core/src/test.ts",
+            "tsConfig": "projects/ecomm/core/tsconfig.spec.json",
+            "karmaConfig": "projects/ecomm/core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ecomm/core/tsconfig.lib.json",
+              "projects/ecomm/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "EcommPortal"
