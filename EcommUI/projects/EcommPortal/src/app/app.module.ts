@@ -10,6 +10,8 @@ import { MaterialModule } from './shared/material.module';
 import { APP_CONFIG } from './shared/AppConfig';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomInterceptorService } from './common/custom-interceptor/custom-interceptor.service';
 
 const AppConfig:IAppConfig={
   apiEndPoint:environment.apiEndPoint
@@ -26,7 +28,10 @@ const AppConfig:IAppConfig={
     UserModule,
     AdminModule
   ],
-  providers: [{provide:APP_CONFIG,useValue:AppConfig}],
+  providers: [
+    { provide: APP_CONFIG, useValue: AppConfig },
+    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService,multi:true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
