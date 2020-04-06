@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.use("/user", index_1.userRoute);
 app.use("/category", index_1.categoryRoute);
 app.use("/product", index_1.productRoute);
+app.use("/errorLog", index_1.errorLogRoute);
 app.listen(process.env.PORT || 3000, () => {
     db_1.MongoConnect.connect().then(res => console.log("DB Connected"));
     console.log("Server running on port 3000");
