@@ -28,12 +28,12 @@ export class AdminGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (sessionStorage.getItem("role") != null) {
+    if (sessionStorage.getItem('role') != null) {
       const role = this.encdecService.decrypt(
-        sessionStorage.getItem("role"),
-        ""
+        sessionStorage.getItem('role'),
+        ''
       );
-      if (role === "Admin") {
+      if (role === 'Admin') {
         return true;
       } else {
         this.navigateToLogin(state);
@@ -46,11 +46,11 @@ export class AdminGuard implements CanActivate, CanLoad {
     route: Route,
     segments: UrlSegment[]
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
+   return true;
   }
 
   navigateToLogin(state: RouterStateSnapshot) {
-    this.router.navigate(["/login"], { queryParams: { returnUrl: state.url } });
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return false;
   }
 }

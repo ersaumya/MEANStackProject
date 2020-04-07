@@ -10,7 +10,7 @@ import { MaterialModule } from './shared/material.module';
 import { APP_CONFIG } from './shared/AppConfig';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CustomInterceptorService } from './common/custom-interceptor/custom-interceptor.service';
 
 const AppConfig:IAppConfig={
@@ -24,9 +24,11 @@ const AppConfig:IAppConfig={
     BrowserAnimationsModule,
     CustomCommonModule,
     MaterialModule,
-    AppRoutingModule,
     UserModule,
-    AdminModule
+    AdminModule,
+    HttpClientModule,
+    AppRoutingModule
+    
   ],
   providers: [
     { provide: APP_CONFIG, useValue: AppConfig },

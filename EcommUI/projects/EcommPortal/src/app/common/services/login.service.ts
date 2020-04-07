@@ -19,7 +19,7 @@ export class LoginService {
 
   login(user: IUser) {
     return this.httpClient.post<IResponse>(
-      this.appConfig.apiEndPoint + "/user/login",
+      this.appConfig.apiEndPoint + '/user/login',
       user
     );
   }

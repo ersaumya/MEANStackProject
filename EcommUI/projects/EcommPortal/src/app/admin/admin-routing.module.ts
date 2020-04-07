@@ -5,9 +5,10 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { AdminGuard } from './guard/admin.guard';
 
 
+
 const routes: Routes = [
   {
-    path: "admin/dashboard",
+    path: 'dashboard',
     component: AdminDashboardComponent,
     canActivate: [AuthGuard, AdminGuard]
   }
