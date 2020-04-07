@@ -32,7 +32,8 @@ const AppConfig:IAppConfig={
   ],
   providers: [
     { provide: APP_CONFIG, useValue: AppConfig },
-    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService,multi:true }
+    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService,multi:true },
+    { provide: ErrorHandler, useClass: ErrorHandlerService }
   ],
   bootstrap: [AppComponent]
 })
