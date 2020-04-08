@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       case "Admin":
         //redirect to admin dashboard
         this.router.navigate(["/admin/dashboard"]);
+        break;
       default:
         this._snackBar.open("Not a valid role!", "Login", {
           duration: 1000
