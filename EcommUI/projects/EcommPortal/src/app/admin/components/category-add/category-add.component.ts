@@ -40,9 +40,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   saveCategories() {
-    this.categoryService.postCategories(this.categoryForm.controls['category'].value).subscribe((result)=>{
-      console.log(result);
-      this.categoryForm.reset();
-    });
+    this.addcategory.emit(this.categoryForm.controls["category"].value);
+   
   }
 }

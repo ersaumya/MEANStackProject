@@ -1,5 +1,3 @@
-{{ categoryForm.value | json }}
-
 <form [formGroup]="categoryForm" (submit)="saveCategories()">
   <div formArrayName="category">
     <div *ngFor="let category of categoryForm['controls'].category['controls'];let i = index">

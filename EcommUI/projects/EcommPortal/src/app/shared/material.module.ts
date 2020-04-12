@@ -12,6 +12,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatTableModule } from "@angular/material/table";
+import { MatDividerModule } from "@angular/material/divider";
 
 const materialModules = [
   CommonModule,
@@ -27,7 +29,9 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTableModule,
+  MatDividerModule
 ];
 
 @NgModule({
