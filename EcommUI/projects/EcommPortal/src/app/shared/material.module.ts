@@ -15,6 +15,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTableModule } from "@angular/material/table";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSelectModule } from "@angular/material/select";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
 
 const materialModules = [
   CommonModule,
@@ -33,7 +35,9 @@ const materialModules = [
   MatSnackBarModule,
   MatTableModule,
   MatDividerModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({
