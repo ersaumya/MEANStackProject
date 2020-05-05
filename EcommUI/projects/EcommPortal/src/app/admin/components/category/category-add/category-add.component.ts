@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
-import { CategoryService } from '../../../common/services/category.service';
+import { CategoryService } from '../../../../common/services/category.service';
 
 @Component({
   selector: "app-category-add",

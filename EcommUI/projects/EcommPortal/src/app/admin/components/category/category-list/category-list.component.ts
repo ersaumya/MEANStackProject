@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { CategoryService } from '../../../common/services/category.service';
+import { CategoryService } from '../../../../common/services/category.service';
 
 
 @Component({
