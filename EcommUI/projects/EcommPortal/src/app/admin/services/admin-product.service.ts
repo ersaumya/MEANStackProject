@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APP_CONFIG } from '../../shared/AppConfig';
 import { IAppConfig } from '../../shared/IAppConfig';
-import { IResponse } from '../../common/models/login-response.model';
+import { IResponse } from '../../common/models/response.model';
 
 @Injectable({
   providedIn: "root",

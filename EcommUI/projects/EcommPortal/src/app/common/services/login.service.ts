@@ -4,7 +4,7 @@ import { environment } from "./../../../environments/environment";
 import { IUser } from "./../models/user.model";
 import { HttpClient } from "@angular/common/http";
 import { Injectable, Inject } from "@angular/core";
-import { IResponse } from '../models/login-response.model';
+import { IResponse } from '../models/response.model';
 
 @Injectable({
   providedIn: "root"

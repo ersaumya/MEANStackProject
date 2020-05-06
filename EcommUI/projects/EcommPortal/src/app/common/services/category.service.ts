@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { IResponse } from '../models/login-response.model';
+import { IResponse } from '../models/response.model';
 import { HttpClient } from '@angular/common/http';
 import { APP_CONFIG } from '../../shared/AppConfig';
 import { IAppConfig } from '../../shared/IAppConfig';

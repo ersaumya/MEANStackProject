@@ -19,6 +19,11 @@
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" />
+        <div>
+          <mat-error *ngIf="registrationForm.errors?.invalidPassword">
+            Password and Confirm Password should be same
+          </mat-error>
+        </div>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Confirm Password</mat-label>
@@ -37,12 +42,20 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button type="submit" mat-raised-button color="primary">Register</button>
+      <button
+        [disabled]="registrationForm.invalid"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        Register
+      </button>
     </mat-card-actions>
   </form>
 </mat-card>
 
-{{ registrationForm.valid | json }}
+<!-- {{ registrationForm.valid | json }}
 {{ registrationForm.invalid | json }}
 {{ registrationForm.pristine | json }}
 {{ registrationForm.value | json }}
+{{ registrationForm.errors | json }} -->

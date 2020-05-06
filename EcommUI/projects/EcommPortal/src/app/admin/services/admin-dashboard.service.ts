@@ -1,4 +1,4 @@
-import { IResponse } from './../../common/models/login-response.model';
+import { IResponse } from '../../common/models/response.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { IAppConfig } from '../../shared/IAppConfig';
